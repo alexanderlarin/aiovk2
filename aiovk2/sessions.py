@@ -5,10 +5,12 @@ from urllib.parse import parse_qsl
 
 import aiohttp.hdrs
 
-from aiovk.drivers import HttpDriver
-from aiovk.exceptions import AUTHORIZATION_FAILED, CAPTCHA_IS_NEEDED, VkAPIError, VkAuthError, VkCaptchaNeeded, \
+from .drivers import HttpDriver
+from .exceptions import AUTHORIZATION_FAILED, CAPTCHA_IS_NEEDED, VkAPIError, VkAuthError, VkCaptchaNeeded, \
     VkTwoFactorCodeNeeded
-from aiovk.parser import AccessPageParser, AuthPageParser, TwoFactorCodePageParser, AuthRedirectPageParser
+from .parser import AccessPageParser, AuthPageParser, TwoFactorCodePageParser, AuthRedirectPageParser
+
+DEFAULT_API_VERSION = '5.81'
 
 
 class BaseSession(ABC):
@@ -42,10 +44,9 @@ class BaseSession(ABC):
 class TokenSession(BaseSession):
     """Implements simple session that uses existed token for work"""
 
-    API_VERSION = '5.81'
     REQUEST_URL = 'https://api.vk.com/method/'
 
-    def __init__(self, access_token: str = None, timeout: int = 10, driver=None):
+    def __init__(self, access_token: str = None, timeout: int = 10, driver=None, version=DEFAULT_API_VERSION):
         """
         :param access_token: see `User Token` block from `https://vk.com/dev/access_token`
         :param timeout: default time out for any request in current session
@@ -53,6 +54,7 @@ class TokenSession(BaseSession):
         """
         self.timeout = timeout
         self.access_token = access_token
+        self.version = version
         self.driver = HttpDriver(timeout) if driver is None else driver
 
     async def __aenter__(self) -> BaseSession:
@@ -72,7 +74,7 @@ class TokenSession(BaseSession):
         if self.access_token:
             params['access_token'] = self.access_token
         if 'v' not in params:
-            params['v'] = self.API_VERSION
+            params['v'] = self.version
 
         # Send request
         _, response = await self.driver.post_json(self.REQUEST_URL + method_name, params, timeout=timeout)
@@ -131,7 +133,7 @@ class ImplicitSession(TokenSession):
     AUTH_URL = 'https://oauth.vk.com/authorize'
 
     def __init__(self, login: str, password: str, app_id: int, scope: str or int or list = None,
-                 timeout: int = 10, num_of_attempts: int = 5, driver=None):
+                 timeout: int = 10, num_of_attempts: int = 5, driver=None, version=DEFAULT_API_VERSION):
         """
         :param login: user login
         :param password: user password
@@ -141,7 +143,7 @@ class ImplicitSession(TokenSession):
         :param num_of_attempts: number of authorization attempts
         :param driver: TODO add description
         """
-        super().__init__(access_token=None, timeout=timeout, driver=driver)
+        super().__init__(access_token=None, timeout=timeout, driver=driver, version=version)
         self.login = login
         self.password = password
         self.app_id = app_id
@@ -192,7 +194,7 @@ class ImplicitSession(TokenSession):
             'redirect_uri': 'https://oauth.vk.com/blank.html',
             'display': 'mobile',
             'response_type': 'token',
-            'v': self.API_VERSION
+            'v': self.version
         }
         if self.scope:
             params['scope'] = self.scope

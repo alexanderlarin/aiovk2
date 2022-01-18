@@ -1,6 +1,6 @@
 import pytest
 
-from aiovk import ImplicitSession, API, LongPoll, TokenSession
+from aiovk2 import ImplicitSession, API, LongPoll, TokenSession
 
 pytestmark = pytest.mark.asyncio
 

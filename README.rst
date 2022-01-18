@@ -1,5 +1,7 @@
 vk.com API python wrapper for asyncio
 =====================================
+ImportantThis is a fork of https://github.com/Fahreeve/aiovk package which looks currently outdated and unmaintained
+
 for old version of python you can use https://github.com/dimka665/vk
 
 Features
@@ -21,7 +23,7 @@ Install
 
 .. code-block:: bash
 
-    pip install aiovk
+    pip install aiovk2
 
 Examples
 ========
@@ -92,7 +94,7 @@ Or:
 
 .. code-block:: python
 
-    async with aiovk.TokenSession(access_token=YOUR_VK_TOKEN) as ses:
+    async with aiovk2.TokenSession(access_token=YOUR_VK_TOKEN) as ses:
         api = API(ses)...
 
 And your session will be closed after all done or code fail(similar to simple "with" usage)
@@ -270,7 +272,7 @@ For documentation, see: https://vk.com/dev/execute
 
 .. code-block:: python
 
-    from aiovk.pools import AsyncVkExecuteRequestPool
+    from aiovk2.pools import AsyncVkExecuteRequestPool
 
     async with AsyncVkExecuteRequestPool() as pool:
         response = pool.add_call('users.get', 'YOUR_TOKEN', {'user_ids': 1})
@@ -295,7 +297,7 @@ or
 
 .. code-block:: python
 
-    from aiovk.pools import AsyncVkExecuteRequestPool
+    from aiovk2.pools import AsyncVkExecuteRequestPool
 
     pool = AsyncVkExecuteRequestPool()
     response = pool.add_call('users.get', 'YOUR_TOKEN', {'user_ids': 1})

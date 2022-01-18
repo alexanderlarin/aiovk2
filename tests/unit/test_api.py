@@ -1,8 +1,8 @@
 import pytest
 
-from aiovk import API
-from aiovk.api import Request, LazyRequest, LazyAPI
-from aiovk.sessions import BaseSession
+from aiovk2 import API
+from aiovk2.api import Request, LazyRequest, LazyAPI
+from aiovk2.sessions import BaseSession
 
 pytestmark = pytest.mark.asyncio
 
