@@ -19,13 +19,13 @@ with codecs.open(os.path.join(os.path.abspath(os.path.dirname(
         raise RuntimeError('Unable to determine version.')
 
 setup(
-    name='aiovk',
+    name='aiovk2',
     version=version,
 
-    author='Fahreev Eldar',
-    author_email='fahreeve@yandex.ru',
+    author='Alexander Larin',
+    author_email='ekzebox@gmail.com',
 
-    url='https://github.com/Fahreeve/aiovk',
+    url='https://github.com/alexanderlarin/aiovk2',
     description='vk.com API python wrapper for asyncio',
     long_description=readme,
 
@@ -40,6 +40,8 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     keywords='vk.com api vk wrappper asyncio',
