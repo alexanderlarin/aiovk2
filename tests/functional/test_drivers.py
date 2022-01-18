@@ -7,7 +7,7 @@ from aiohttp.test_utils import unused_port
 from python_socks import ProxyType
 from yarl import URL
 
-from aiovk.drivers import HttpDriver, ProxyDriver
+from aiovk2.drivers import HttpDriver, ProxyDriver
 
 pytestmark = pytest.mark.asyncio
 

@@ -3,8 +3,8 @@ import time
 
 import pytest
 
-from aiovk.drivers import BaseDriver
-from aiovk.mixins import LimitRateDriverMixin
+from aiovk2.drivers import BaseDriver
+from aiovk2.mixins import LimitRateDriverMixin
 
 pytestmark = pytest.mark.asyncio
 

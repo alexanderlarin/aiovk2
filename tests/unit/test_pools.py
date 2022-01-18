@@ -4,7 +4,7 @@ from unittest import IsolatedAsyncioTestCase
 
 # from dotenv import load_dotenv
 
-from aiovk.pools import AsyncResult, AsyncVkExecuteRequestPool
+from aiovk2.pools import AsyncResult, AsyncVkExecuteRequestPool
 
 # load_dotenv(
 #     os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), ".env")

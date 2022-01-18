@@ -1,7 +1,7 @@
 import pytest
 
-from aiovk import ImplicitSession, TokenSession
-from aiovk.exceptions import VkAuthError
+from aiovk2 import ImplicitSession, TokenSession
+from aiovk2.exceptions import VkAuthError
 
 pytestmark = pytest.mark.asyncio
 

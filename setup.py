@@ -11,7 +11,7 @@ with open('requirements.txt') as f:
     requirements = list(map(lambda x: x.strip(), f.readlines()))
 
 with codecs.open(os.path.join(os.path.abspath(os.path.dirname(
-        __file__)), 'aiovk', '__init__.py'), 'r', 'latin1') as fp:
+        __file__)), 'aiovk2', '__init__.py'), 'r', 'latin1') as fp:
     try:
         version = re.findall(r"^__version__ = '([^']+)'\r?$",
                              fp.read(), re.M)[0]

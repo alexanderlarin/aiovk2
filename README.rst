@@ -94,7 +94,7 @@ Or:
 
 .. code-block:: python
 
-    async with aiovk.TokenSession(access_token=YOUR_VK_TOKEN) as ses:
+    async with aiovk2.TokenSession(access_token=YOUR_VK_TOKEN) as ses:
         api = API(ses)...
 
 And your session will be closed after all done or code fail(similar to simple "with" usage)
@@ -272,7 +272,7 @@ For documentation, see: https://vk.com/dev/execute
 
 .. code-block:: python
 
-    from aiovk.pools import AsyncVkExecuteRequestPool
+    from aiovk2.pools import AsyncVkExecuteRequestPool
 
     async with AsyncVkExecuteRequestPool() as pool:
         response = pool.add_call('users.get', 'YOUR_TOKEN', {'user_ids': 1})
@@ -297,7 +297,7 @@ or
 
 .. code-block:: python
 
-    from aiovk.pools import AsyncVkExecuteRequestPool
+    from aiovk2.pools import AsyncVkExecuteRequestPool
 
     pool = AsyncVkExecuteRequestPool()
     response = pool.add_call('users.get', 'YOUR_TOKEN', {'user_ids': 1})

@@ -2,11 +2,11 @@ import json
 
 import pytest
 
-from aiovk import LongPoll, API
-from aiovk.drivers import BaseDriver
-from aiovk.exceptions import VkLongPollError
-from aiovk.longpoll import BotsLongPoll
-from aiovk.sessions import BaseSession
+from aiovk2 import LongPoll, API
+from aiovk2.drivers import BaseDriver
+from aiovk2.exceptions import VkLongPollError
+from aiovk2.longpoll import BotsLongPoll
+from aiovk2.sessions import BaseSession
 
 pytestmark = pytest.mark.asyncio
 
