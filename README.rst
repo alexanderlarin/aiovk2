@@ -1,6 +1,6 @@
 vk.com API python wrapper for asyncio
 =====================================
-ImportantThis is a fork of https://github.com/Fahreeve/aiovk package which looks currently outdated and unmaintained
+This is a fork of https://github.com/Fahreeve/aiovk package which looks currently outdated and unmaintained
 
 for old version of python you can use https://github.com/dimka665/vk
 
